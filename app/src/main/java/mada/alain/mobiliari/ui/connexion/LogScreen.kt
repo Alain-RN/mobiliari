@@ -77,7 +77,6 @@ fun LogScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp),
-
             onClick = {
                 scope.launch {
                     viewModel.logIn(email = email, password = password)

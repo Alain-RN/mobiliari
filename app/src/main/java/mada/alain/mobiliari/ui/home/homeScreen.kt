@@ -70,7 +70,7 @@ fun HomeScreen(
             horizontalArrangement = Arrangement.Center,
             modifier =  Modifier
                 .fillMaxSize()
-                .padding(top = 4.dp)
+                .padding(top = 8.dp)
         ){
                 LazyColumn(
                     state = listState1,
