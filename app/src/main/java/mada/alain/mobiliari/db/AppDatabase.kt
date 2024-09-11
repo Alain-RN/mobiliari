@@ -5,9 +5,11 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import android.content.Context
 
-@Database(entities = [User::class], version = 1)
+@Database(entities = [User::class, Meuble::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun meubleDao(): MeubleDao
+
 
     companion object {
         @Volatile
@@ -18,7 +20,7 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "app_database"
+                    "mobiliari_database0"
                 ).build()
                 INSTANCE = instance
                 instance

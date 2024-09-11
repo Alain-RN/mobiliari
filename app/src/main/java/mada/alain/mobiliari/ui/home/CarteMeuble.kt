@@ -30,7 +30,7 @@ fun SmallFurnitureCard(
     prixMeuble: String,
     imageMeuble: Int,
 //    navController: NavController, // Navigation Controller
-    onClickDetail: (String) -> Unit // Action on click
+    onClickDetail: () -> Unit // Action on click
 ) {
     val a = ImageBitmap.imageResource(id = imageMeuble)
 
@@ -40,7 +40,7 @@ fun SmallFurnitureCard(
         modifier = Modifier
 
             .clickable {
-                onClickDetail(nomMeuble)
+                onClickDetail()
             }
 
             .width(182.dp) // Largeur fixe pour les cartes

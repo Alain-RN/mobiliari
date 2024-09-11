@@ -17,22 +17,29 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import mada.alain.mobiliari.R
 
 
 @Composable
-fun UserListScreen(viewModel: UserViewModel = viewModel()) {
+fun UserListScreen(
+    viewModel: UserViewModel = viewModel(),
+    viewModel2 : MeubleViewModel = viewModel()
+)
+{
     // Appel de la fonction pour charger les utilisateurs
     viewModel.getAllUsers()
+    viewModel2.getAllMeubles()
 
     // Récupérer l'état des utilisateurs
     val users = viewModel.users.collectAsState()
-
+    val meubles = viewModel2.meubles.collectAsState()
     Column {
         // Affichage des utilisateurs
         LazyColumn {
-            items(users.value) { user ->
+            items(meubles.value) { user ->
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
@@ -40,15 +47,19 @@ fun UserListScreen(viewModel: UserViewModel = viewModel()) {
                         .padding(start = 30.dp, end = 12.dp)
 
                 ){
-                    Text(
-                        text = "User: ${user.username}, E: ${user.email}",
+                    androidx.compose.material.Text(
+                        text = "User: ${user.nomID}, E: ${user.prix}",
                         modifier = Modifier
                             .weight(1f)
                         )
-                    IconButton(onClick = {
-                        viewModel.deleteUser(user.id)
+                    androidx.compose.material.IconButton(onClick = {
+                        viewModel2.delete(user.nomID)
                     }) {
-                        Icon(imageVector = Icons.Default.Delete, contentDescription = "", tint = Color.Red)
+                        val i = R.drawable.close.toString()
+                        Icon(
+                            painter = painterResource(id = i.toInt()),
+                            contentDescription = ""
+                        )
                     }
                 }
 

@@ -21,9 +21,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import mada.alain.mobiliari.db.MeubleViewModel
 import mada.alain.mobiliari.db.UserViewModel
 import mada.alain.mobiliari.ui.ar.ArScreen
 import mada.alain.mobiliari.ui.connexion.connexionScreen
+import mada.alain.mobiliari.ui.details.FurnitureDetailScreen
 import mada.alain.mobiliari.ui.home.HomeScreen
 import mada.alain.mobiliari.ui.panier.TopAppBarWithCartAndLogo
 import mada.alain.mobiliari.ui.profile.ProfileScreen
@@ -34,7 +36,7 @@ import mada.alain.mobiliari.ui.search.SearchScreen
 @Composable
 fun appScreen(
     modifier: Modifier,
-    viewModel: UserViewModel = viewModel()
+    viewModel: MeubleViewModel = viewModel()
 ) {
     val bg = 0xFFF5F3FF
     Surface(
@@ -46,6 +48,7 @@ fun appScreen(
 //        connexionScreen(
 //            viewModel = viewModel
 //        )
+
         val navController = rememberNavController()
 
         var showBottomBar by remember { mutableStateOf(true) }
@@ -56,6 +59,7 @@ fun appScreen(
                 showBottomBar = when (backStackEntry.destination.route) {
                     "search" -> false
                     "ar" -> false
+                    "detail/{meubleId}" -> false
                     else -> true
                 }
             }
@@ -91,7 +95,17 @@ fun appScreen(
                     .background(color = Color(0xFFF5F3FF)),
             ) {
                 composable("home") {
-                    HomeScreen()
+                    HomeScreen(
+                        navController = navController,
+                        viewModel = viewModel
+                    )
+                }
+                composable("detail/{meubleId}") {
+                    FurnitureDetailScreen(
+                        navController = navController,
+                        viewModel = viewModel,
+                        meubleId = it.arguments?.getString("meubleId")
+                    )
                 }
                 composable("saved") {
                     SavedScreen()

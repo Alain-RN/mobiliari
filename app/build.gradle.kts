@@ -51,39 +51,54 @@ android {
 }
 
 dependencies {
+    // Compose UI
+    implementation("androidx.compose.ui:ui:1.7.0")
 
+    // Material Design (composants tels que les boutons, icônes, etc.)
+    implementation("androidx.compose.material:material:1.7.0")
+    implementation("androidx.compose.material:material-icons-core:1.7.0")
+    implementation("androidx.compose.material:material-icons-extended:1.7.0")
+
+    // Outils de prévisualisation Compose
+    implementation("androidx.compose.ui:ui-tooling-preview:1.7.0")
+
+    // Activity Compose (pour intégrer Compose dans une Activity)
+    implementation("androidx.activity:activity-compose:1.9.2")
+
+    // Core KTX
     implementation("androidx.core:core-ktx:1.13.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
-    implementation("androidx.activity:activity-compose:1.9.1")
+
+    // Compose BOM (Gestion des versions des dépendances Compose)
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
-    implementation("androidx.compose.ui:ui")
+
+    // Graphics et autres outils Compose
     implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+
+    // ConstraintLayout avec Compose
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
-//    implementation("androidx.compose.material3:material3-android:1.3.0")
+
+    // Tests unitaires
     testImplementation("junit:junit:4.13.2")
+
+    // Tests instrumentés
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.08.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+
+    // Dépendances de débogage
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    // Navigation Compose
     implementation("androidx.navigation:navigation-compose:2.8.0")
-
-
-    implementation("androidx.compose.material:material:1.7.0")
-    implementation("androidx.compose.material:material-icons-extended:1.7.0")
-    implementation("androidx.compose.ui:ui:1.7.0")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.7.0")
-
-    implementation("androidx.compose.material:material-icons-extended:1.7.0")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
-    androidTestImplementation("androidx.test.ext:junit:1.2.1")
 //    DB
     implementation("androidx.room:room-ktx:2.6.1")
     implementation("androidx.room:room-runtime:2.6.1")
-    kapt("androidx.room:room-compiler:2.6.1")// Pour les projets Kotlin
-    annotationProcessor("androidx.room:room-compiler:2.6.1") // Pour les projets Java
+    kapt("androidx.room:room-compiler:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
+
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
+    implementation("androidx.activity:activity-compose:1.9.1")
 }
