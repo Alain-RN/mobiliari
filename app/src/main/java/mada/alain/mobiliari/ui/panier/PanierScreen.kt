@@ -57,7 +57,7 @@ fun PanierScreen(
             ) {
                 // Bouton de retour
                 IconButton(onClick = {
-
+                    navController.navigate("home")
                 }) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
@@ -85,6 +85,7 @@ fun PanierScreen(
                 .padding(horizontal = 8.dp)
         ) {
             LazyColumn {
+
                 items(meubles) { item ->
                     CardRowMeubleTrash(furniturePanier = item)
                     Spacer(modifier = Modifier.height(4.dp))

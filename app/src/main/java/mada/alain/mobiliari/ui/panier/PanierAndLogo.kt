@@ -20,10 +20,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import mada.alain.mobiliari.R
 
 @Composable
-fun TopAppBarWithCartAndLogo() {
+fun TopAppBarWithCartAndLogo(
+    navController: NavController
+) {
     TopAppBar(
         modifier = Modifier
             .height(68.dp),
@@ -49,7 +52,7 @@ fun TopAppBarWithCartAndLogo() {
                 // Titre ou autre texte
                 // Bouton panier
                 IconButton(onClick = {
-                    // Action quand on clique sur le panier
+                    navController.navigate("panier")
                 }) {
                     Icon(
                         painter = painterResource(id = R.drawable.cart), // Remplace avec ton icône de panier

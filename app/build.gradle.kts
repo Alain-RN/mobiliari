@@ -51,9 +51,6 @@ android {
 }
 
 dependencies {
-    // Compose UI
-    implementation("androidx.compose.ui:ui:1.7.0")
-
     // Material Design (composants tels que les boutons, icônes, etc.)
     implementation("androidx.compose.material:material:1.7.0")
     implementation("androidx.compose.material:material-icons-core:1.7.0")
@@ -78,6 +75,7 @@ dependencies {
     // ConstraintLayout avec Compose
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
 
+
     // Tests unitaires
     testImplementation("junit:junit:4.13.2")
 
@@ -88,12 +86,12 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
 
     // Dépendances de débogage
-    debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     // Navigation Compose
     implementation("androidx.navigation:navigation-compose:2.8.0")
-//    DB
+
+    // DB
     implementation("androidx.room:room-ktx:2.6.1")
     implementation("androidx.room:room-runtime:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
@@ -101,4 +99,15 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
     implementation("androidx.activity:activity-compose:1.9.1")
+
+    implementation("androidx.compose.ui:ui:1.7.0")
+
+// Optionnel : Pour afficher les aperçus de l'UI pendant le développement
+    debugImplementation("androidx.compose.ui:ui-tooling:1.7.0")
+
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0")
+
+
+    // ARSceneview
+    implementation("io.github.sceneview:arsceneview:2.2.1")
 }

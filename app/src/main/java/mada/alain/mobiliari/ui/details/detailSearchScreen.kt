@@ -141,7 +141,6 @@ fun FurnitureDetailScreen(
                     color = Color(0xFF333333)
                 )
 
-
             Spacer(modifier = Modifier.height(8.dp))
 
             // Ajout des dimensions du meuble

@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-
 import androidx.compose.material.Surface
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -15,18 +14,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.onGloballyPositioned
-
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import mada.alain.mobiliari.db.MeubleViewModel
-import mada.alain.mobiliari.db.UserViewModel
 import mada.alain.mobiliari.ui.ar.ArScreen
-import mada.alain.mobiliari.ui.connexion.connexionScreen
 import mada.alain.mobiliari.ui.details.FurnitureDetailScreen
 import mada.alain.mobiliari.ui.home.HomeScreen
+import mada.alain.mobiliari.ui.panier.PanierScreen
 import mada.alain.mobiliari.ui.panier.TopAppBarWithCartAndLogo
 import mada.alain.mobiliari.ui.profile.ProfileScreen
 import mada.alain.mobiliari.ui.saved.SavedScreen
@@ -60,6 +56,7 @@ fun appScreen(
                     "search" -> false
                     "ar" -> false
                     "detail/{meubleId}" -> false
+                    "panier" -> false
                     else -> true
                 }
             }
@@ -78,7 +75,9 @@ fun appScreen(
             modifier = Modifier,
             topBar = {
                 if(showTopBar){
-                    TopAppBarWithCartAndLogo()
+                    TopAppBarWithCartAndLogo(
+                        navController = navController
+                    )
                 }
             },
             bottomBar = {
@@ -111,7 +110,9 @@ fun appScreen(
                     SavedScreen()
                 }
                 composable("ar") {
-                    ArScreen( navController = navController )
+                    ArScreen(
+//                        navController = navController
+                    )
                 }
                 composable("search") {
                     SearchScreen( navController = navController )
@@ -119,6 +120,10 @@ fun appScreen(
                 composable("profile") {
                     ProfileScreen()
                 }
+                composable("panier") {
+                    PanierScreen(navController = navController)
+                }
+
             }
         }
 //        Simulation chargement(A venir)
